@@ -1,4 +1,5 @@
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function () {
         Highcharts.setOptions({global: { useUTC: false } })
 
@@ -61,7 +62,7 @@
 
         function update{{ $model->id }}() {
             $.ajax({
-                url:  "{{ $model->url }}",
+                url:  "{!! $model->url !!}",
                 success: function(point) {
                     var series = {{ $model->id }}.series[0],
                         shift = series.data.length >= {{ $model->max_values }} // shift if the series is longer than 20

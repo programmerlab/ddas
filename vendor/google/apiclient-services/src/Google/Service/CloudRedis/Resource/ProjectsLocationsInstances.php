@@ -41,7 +41,7 @@ class Google_Service_CloudRedis_Resource_ProjectsLocationsInstances extends Goog
    *
    * @param string $parent Required. The resource name of the instance location
    * using the form:     `projects/{project_id}/locations/{location_id}` where
-   * `location_id` refers to a GCP region
+   * `location_id` refers to a GCP region.
    * @param Google_Service_CloudRedis_Instance $postBody
    * @param array $optParams Optional parameters.
    *
@@ -65,7 +65,7 @@ class Google_Service_CloudRedis_Resource_ProjectsLocationsInstances extends Goog
    *
    * @param string $name Required. Redis instance resource name using the form:
    * `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where
-   * `location_id` refers to a GCP region
+   * `location_id` refers to a GCP region.
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudRedis_Operation
    */
@@ -76,11 +76,29 @@ class Google_Service_CloudRedis_Resource_ProjectsLocationsInstances extends Goog
     return $this->call('delete', array($params), "Google_Service_CloudRedis_Operation");
   }
   /**
+   * Initiates a failover of the master node to current replica node for a
+   * specific STANDARD tier Cloud Memorystore for Redis instance.
+   * (instances.failover)
+   *
+   * @param string $name Required. Redis instance resource name using the form:
+   * `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where
+   * `location_id` refers to a GCP region.
+   * @param Google_Service_CloudRedis_FailoverInstanceRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_CloudRedis_Operation
+   */
+  public function failover($name, Google_Service_CloudRedis_FailoverInstanceRequest $postBody, $optParams = array())
+  {
+    $params = array('name' => $name, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('failover', array($params), "Google_Service_CloudRedis_Operation");
+  }
+  /**
    * Gets the details of a specific Redis instance. (instances.get)
    *
    * @param string $name Required. Redis instance resource name using the form:
    * `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where
-   * `location_id` refers to a GCP region
+   * `location_id` refers to a GCP region.
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudRedis_Instance
    */
@@ -103,17 +121,17 @@ class Google_Service_CloudRedis_Resource_ProjectsLocationsInstances extends Goog
    *
    * @param string $parent Required. The resource name of the instance location
    * using the form:     `projects/{project_id}/locations/{location_id}` where
-   * `location_id` refers to a GCP region
+   * `location_id` refers to a GCP region.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string pageToken The next_page_token value returned from a
-   * previous List request, if any.
    * @opt_param int pageSize The maximum number of items to return.
    *
    * If not specified, a default value of 1000 will be used by the service.
    * Regardless of the page_size value, the response may include a partial list
    * and a caller should only rely on response's next_page_token to determine if
    * there are more instances left to be queried.
+   * @opt_param string pageToken The next_page_token value returned from a
+   * previous List request, if any.
    * @return Google_Service_CloudRedis_ListInstancesResponse
    */
   public function listProjectsLocationsInstances($parent, $optParams = array())

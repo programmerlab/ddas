@@ -26,6 +26,22 @@
 class Google_Service_DLP_Resource_ProjectsJobTriggers extends Google_Service_Resource
 {
   /**
+   * Activate a job trigger. Causes the immediate execute of a trigger instead of
+   * waiting on the trigger event to occur. (jobTriggers.activate)
+   *
+   * @param string $name Resource name of the trigger to activate, for example
+   * `projects/dlp-test-project/jobTriggers/53234423`.
+   * @param Google_Service_DLP_GooglePrivacyDlpV2ActivateJobTriggerRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_DLP_GooglePrivacyDlpV2DlpJob
+   */
+  public function activate($name, Google_Service_DLP_GooglePrivacyDlpV2ActivateJobTriggerRequest $postBody, $optParams = array())
+  {
+    $params = array('name' => $name, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('activate', array($params), "Google_Service_DLP_GooglePrivacyDlpV2DlpJob");
+  }
+  /**
    * Creates a job trigger to run DLP actions such as scanning storage for
    * sensitive information on a set schedule. See
    * https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.

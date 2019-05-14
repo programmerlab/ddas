@@ -1,29 +1,25 @@
 
-## Charts version 5 - Under Development, use 4.X for stable version
-
-<p align="center">
-<img src="http://i.imgur.com/47WnADd.png">
-</p>
-
 ## Table Of Contents
 
--   [Installation](#installation)
--   [Default Settings](#default-settings)
--   [Example Usage](#example-usage)
--   [Create Charts](#create-charts)
--   [Multi Datasets Chart](#multi-datasets-charts)
--   [Database Charts](#database-charts)
--   [Multi Database Charts](#multi-database-charts)
--   [Realtime Charts](#realtime-charts)
--   [Math Functions Charts](#math-functions-charts)
--   [Charts Functions](#charts-functions)
--   [Available Chart Settings](#available-chart-settings)
--   [Chart Examples](#chart-examples)
--   [Charts in tabs](#charts-in-tabs)
--   [Extend your way](#extend-your-way)
+-   [Installation](#installation) {data-turbolinks=false}
+-   [Default Settings](#default-settings) {data-turbolinks=false}
+-   [Example Usage](#example-usage) {data-turbolinks=false}
+-   [Create Charts](#create-charts) {data-turbolinks=false}
+-   [Multi Datasets Chart](#multi-datasets-charts) {data-turbolinks=false}
+-   [Database Charts](#database-charts) {data-turbolinks=false}
+-   [Multi Database Charts](#multi-database-charts) {data-turbolinks=false}
+-   [Realtime Charts](#realtime-charts) {data-turbolinks=false}
+-   [Math Functions Charts](#math-functions-charts) {data-turbolinks=false}
+-   [URL Charts (Ajax)](#url-charts) {data-turbolinks=false}
+-   [Multi URL Charts (Ajax)](#multi-url-charts) {data-turbolinks=false}
+-   [Charts Functions](#charts-functions) {data-turbolinks=false}
+-   [Available Chart Settings](#available-chart-settings) {data-turbolinks=false}
+-   [Chart Examples](#chart-examples) {data-turbolinks=false}
+-   [Charts in tabs](#charts-in-tabs) {data-turbolinks=false}
+-   [Extend your way](#extend-your-way) {data-turbolinks=false}
 
 
-## Installation
+## Installation {#installation}
 
 ### Download
 
@@ -53,15 +49,15 @@ Add the following alias to the array in: ```config/app.php```
 php artisan vendor:publish
 ```
 
-## Default Settings
+## Default Settings {#default-settings}
 
 The file in: ```config/charts.php``` contains an array of settings, you can find the default settings in there.
 
-## Default Chart Views
+### Default Chart Views
 
 The default chart views are published as well at the resources/views/vendor folder
 
-## Example Usage
+## Example Usage {#example-usage}
 
 Example Controller:
 
@@ -112,7 +108,7 @@ Example View:
 
         <title>My Charts</title>
 
-        {!! Charts::assets() !!}
+        {!! Charts::styles() !!}
 
     </head>
     <body>
@@ -123,13 +119,14 @@ Example View:
             </center>
         </div>
         <!-- End Of Main Application -->
+        {!! Charts::scripts() !!}
         {!! $chart->script() !!}
     </body>
 </html>
 
 ```
 
-## Create Charts
+## Create Charts {#create-charts}
 
 | Create Charts | line | area | bar | pie | donut | geo | gauge | temp | percentage | progressbar | areaspline | scatter |
 |---------------|------|------|-----|-----|-------|-----|-------|------|------------|-------------|------------|---------|
@@ -158,7 +155,7 @@ Charts::create('line', 'highcharts')
     ->dimensions(0,500);
 ```
 
-## Multi Datasets Charts
+## Multi Datasets Charts {#multi-dataset-charts}
 
 | Multi Dataset Charts | line | area | bar | pie | donut | geo | gauge | temp | percentage | progressbar | areaspline  | scatter |
 |----------------------|------|------|-----|-----|-------|-----|-------|------|------------|-------------|-------------|---------|
@@ -202,7 +199,7 @@ Charts::multi('line', 'highcharts')
     ```
 
 
-## Database Charts
+## Database Charts {#database-charts}
 
 You can also generate database charts with simple setup!
 
@@ -231,7 +228,7 @@ The available methods are:
 
     Set the column to group the data.
 
-    *Default:* ```created_at```
+    *Default:* created_at
 
     ```php
     $chart = Charts::database(User::all(), 'bar', 'highcharts')->dateColumn('my_date_column');
@@ -241,7 +238,7 @@ The available methods are:
 
     Set the fancy date format for `groupByDay()` and `lastByDay()` function if `$fancy` set to true, must be called before those function.
 
-    *Default:* ```l dS M, Y```
+    *Default:* l dS M, Y
 
     ```php
     $chart = Charts::database(User::all(), 'bar', 'highcharts')->dateFormat('j F y');
@@ -251,7 +248,7 @@ The available methods are:
 
     Set the fancy date format for `groupByMonth()` and `lastByMonth()` function if `$fancy` set to true, must be called before those function.
 
-    *Default:* ```F, Y```
+    *Default:* F, Y
 
     ```php
     $chart = Charts::database(User::all(), 'bar', 'highcharts')->monthFormat('F Y');
@@ -261,7 +258,7 @@ The available methods are:
 
     Set the fancy date format for `groupByHour()` function if `$fancy` set to true, must be called before those function.
 
-    *Default:* ```D, M j, Y g A```
+    *Default:* D, M j, Y g A
 
     ```php
     $chart = Charts::database(User::all(), 'bar', 'highcharts')->hourFormat('j, g A');
@@ -271,7 +268,11 @@ The available methods are:
 
     Groups the data based on a column.
 
-    *Note:* Relationship column follows this standard: ```->groupBy('product_id', 'product.model');``` where second argument will set labels to model column of product table based on it's relationship with the model.
+    *Note:* Relationship column follows this standard:
+    ```
+    ->groupBy('product_id', 'product.model');
+    ```
+    where second argument will set labels to model column of product table based on it's relationship with the model.
 
     ```php
     $chart = Charts::database(User::all(), 'bar', 'highcharts')
@@ -297,7 +298,7 @@ The available methods are:
 
     Groups the data based in years.
 
-    *Default:* ```$years = 4```
+    *Default:* $years = 4
 
     ```php
     $chart = Charts::database(User::all(), 'bar', 'highcharts')
@@ -320,7 +321,7 @@ The available methods are:
 
     Groups the data in months (if no year set, the current one will be used).
 
-    *Default:* ```$year = 7, $fancy = false```
+    *Default:* $year = 7, $fancy = false
 
     ```php
     $chart = Charts::database(User::all(), 'bar', 'highcharts')
@@ -343,7 +344,7 @@ The available methods are:
 
     Groups the data in days (if no year/month set, the current one will be used).
 
-    *Default:* ```$month = date('m'), $year = date('Y'), $fancy = false```
+    *Default:* $month = date('m'), $year = date('Y'), $fancy = false
 
     ```php
     $chart = Charts::database(User::all(), 'bar', 'highcharts')
@@ -366,7 +367,7 @@ The available methods are:
 
     Groups the data in hours (if no year/month/day set, the current one will be used).
 
-    *Default:* ```$month = date('m'), $year = date('Y'), $fancy = false```
+    *Default:* $month = date('m'), $year = date('Y'), $fancy = false
 
     ```php
     $chart = Charts::database(User::all(), 'bar', 'highcharts')
@@ -389,7 +390,7 @@ The available methods are:
 
     Alias for groupByYear() method. Does the same.
 
-    *Default:* ```$number = 4```
+    *Default:* $number = 4
 
     ```php
     $chart = Charts::database(User::all(), 'bar', 'highcharts')
@@ -412,7 +413,7 @@ The available methods are:
 
     Display the numbers of months behind (relative to the current date).
 
-    *Default:* ```$number = 6, $fancy = false```
+    *Default:* $number = 6, $fancy = false
 
     ```php
     $chart = Charts::database(User::all(), 'bar', 'highcharts')
@@ -435,7 +436,7 @@ The available methods are:
 
     Display the numbers of days behind (relative to the current date).
 
-    *Default:* ```$number = 7, $fancy = false```
+    *Default:* $number = 7, $fancy = false
 
     ```php
     $chart = Charts::database(User::all(), 'bar', 'highcharts')
@@ -479,7 +480,7 @@ The available methods are:
 
     This will yield summed values for column 'amount'.
 
-### Database method alternative
+### Database alternative method
 
 When creating charts, you might wanna take full control of it, this might be done creating the chart with the ```create``` method
 and adding the data from the database:
@@ -494,7 +495,7 @@ $chart = Charts::create('bar', 'highcharts')
              ->responsive(true);
 ```
 
-## Multi Database Charts
+## Multi Database Charts {#multi-database-charts}
 
 Sometimes it might be usefull to create multi charts from diferent tables, right?
 
@@ -521,7 +522,7 @@ Charts::multiDatabase('line', 'material')
 
 **As mentioned above, this chart got all the available database methods and multi chart methods.**
 
-## Realtime Charts
+## Realtime Charts {#realtime-charts}
 
 ![Realtime Chart Example](https://i.gyazo.com/77a9365e9270cb16a28c6acf11abadc3.gif)
 
@@ -571,7 +572,7 @@ The available methods are:
 
     Sets the value json index.
 
-    *Default:* ```value```
+    *Default:* value
 
     ```php
     $chart = Charts::realtime(url('/path/to/json'), 2000, 'gauge', 'google')
@@ -627,7 +628,7 @@ The available methods are:
                 ->maxValues(10);
     ```
 
-## Math Functions Charts
+## Math Functions Charts {#math-functions-charts}
 
 You can create math function charts.
 
@@ -674,7 +675,80 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
     Charts::math('sin(x)', [0, 10], 0.2, 'line', 'highcharts')->calculate();
     ```
 
-## Charts Functions
+## URL Charts (Ajax) {#url-charts}
+
+**BETA FEATURE WITH CHANGES FOR THE NEXT MAJOR RELEASE**
+
+*Currently only highcharts is supported.*
+
+Since sometimes you need to create a lot of charts and they perhaps require a lot of operations, we allow loading the chart data from
+a URL with ajax.
+
+Example Response from ```/api/data-url```
+```json
+{labels: ['test1', 'test2', 'test3', 'test4'], values: [1, 2, 3, 4]}
+```
+
+```php
+Charts::url(url('/api/data-url'), 'line', 'highcharts');
+```
+
+-   url(required string $url)
+
+    Sets the chart URL (ajax URL).
+
+-   method(required string $method)
+
+    Sets the URL method. Defaults to 'GET'.
+
+-   data(required array $data)
+
+    Set the data to be sent with the HTTP request. This might be usefull for sending auth tokens.
+
+-   valuesName(required string $values_name)
+
+    Set the JSON value name key. Defaults to ```values```
+
+    Example:
+    ```php
+    $values_name = 'values2';
+    ```
+    ```json
+    {labels: ['test1', 'test2', 'test3', 'test4'], values2: [1, 2, 3, 4]}
+    ```
+
+-   labelsName(required string $labels_name)
+
+    Set the JSON labels name key. Defaults to ```labels```
+
+    Example:
+    ```php
+    $labels_name = 'labels2';
+    ```
+    ```json
+    {labels2: ['test1', 'test2', 'test3', 'test4'], values: [1, 2, 3, 4]}
+    ```
+
+-   loadingText(required string $loading_text)
+
+    Set the loading text of the chart.
+
+## Multi URL charts (Ajax) {#multi-url-charts}
+
+**BETA FEATURE WITH CHANGES FOR THE NEXT MAJOR RELEASE**
+
+This class extends the base URL, so all functions there are available.
+
+It works the same way, but expects a different response:
+
+```json
+{
+    'dataset1': [1, 2, 3, 4],
+    'dataset2': [4, 3, 2, 1]
+}
+```
+
+## Charts Functions {#charts-functions}
 
 - create(optional string $type, optional string $library)
 
@@ -790,7 +864,7 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
   print_r(Charts::types('highcharts'));
   ```
 
-## Available Chart Settings
+## Available Chart Settings {#available-chart-settings}
 
 - loader(required bool $loader)
 
@@ -870,7 +944,7 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
 
     Set the region for google geo chart
 
-    *Default:* ```world```
+    *Default:* world
 
     ```php
     Charts::create('geo', 'google')->region('FR');
@@ -880,7 +954,7 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
 
     Set the gauge style
 
-    *Default:* ```left```
+    *Default:* left
 
     *Available options:* ```left``` ```right``` ```center```
 
@@ -980,7 +1054,7 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
 
   Set whether to display the chart legend or not. Currently only works with ```highcharts```.
 
-  *Default:* ```true```
+  *Default:* true
 
   ```php
   Charts::create('line', 'highcharts')->legend(false);
@@ -990,7 +1064,7 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
 
   Set title of the x-axis. Currently only works with ```highcharts```.
 
-  *Default:* ```false```
+  *Default:* false
 
   ```php
   Charts::create('line', 'highcharts')->x_axis_title('Year');
@@ -1000,7 +1074,7 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
 
   Set title of the y-axis. Currently only works with ```highcharts```.
 
-  *Default:* ```null```
+  *Default:* null
 
   *Note:* When set to ```null``` the value for element_label will be used instead.
 
@@ -1034,7 +1108,7 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
   echo Charts::create('line', 'highcharts')->labels(['One', 'Two'])->values([10, 20])->render();
   ```
 
-  ## Chart Examples
+## Chart Examples {#chart-examples}
 
   ### Pie
 
@@ -1210,7 +1284,7 @@ The function is ```sin(x)```, the interval is ```[0, 10]``` and the ```x``` ampl
   Charts::multi('line', 'highcharts')->credits(false);
   ```
 
-## Charts in tabs
+## Charts in tabs {#cjarts-in-tabs}
 
 ![Example tab chart](https://i.gyazo.com/7588eb53db5045a8b3231247d25f8cd6.gif)
 
@@ -1356,7 +1430,7 @@ Lucky for you I'll add a quick method to make it work!
     ```
 
 
-## Extend your way!
+## Extend your way! {#extend-your-way}
 
 You can create your own Charts by forking this repository. The ```src/Templates``` folder contains all the current charts, but you can
 add yours like this:

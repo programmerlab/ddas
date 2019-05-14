@@ -1,6 +1,7 @@
 @include('charts::_partials.container.svg')
 
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function() {
         @include('charts::plottablejs._data.multi')
 
@@ -28,11 +29,11 @@
 
         var label = new Plottable.Components.AxisLabel("{!! $model->element_label !!}").yAlignment('center').angle(270);
 
-        var table = new Plottable.Components.Table([[null,null, title],[label, yAxis, plot],[null, null, xAxis]]);
-        table.renderTo('svg#{{ $model->id }}');
+        {{ $model->id }} = new Plottable.Components.Table([[null,null, title],[label, yAxis, plot],[null, null, xAxis]]);
+        {{ $model->id }}.renderTo('svg#{{ $model->id }}');
 
         window.addEventListener('resize', function() {
-            table.redraw()
+            {{ $model->id }}.redraw()
         })
     });
 </script>

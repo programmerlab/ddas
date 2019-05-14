@@ -1,11 +1,11 @@
 <script type="text/javascript">
     google.charts.setOnLoadCallback(draw{{ $model->id }})
-
+    var {{ $model->id }};
     function draw{{ $model->id }}() {
         var data = google.visualization.arrayToDataTable([
             ['Element', 'Value'],
             @for ($l = 0; $l < count($model->values); $l++)
-                ["{!! $model->labels[$i] !!}", {{ $model->values[$i] }}],
+                ["{!! $model->labels[$l] !!}", {{ $model->values[$l] }}],
             @endfor
         ])
 
@@ -17,7 +17,7 @@
             @include('charts::google.colors')
         };
 
-        var {{ $model->id }} = new google.visualization.PieChart(document.getElementById("{{ $model->id }}"))
+        {{ $model->id }} = new google.visualization.PieChart(document.getElementById("{{ $model->id }}"))
         {{ $model->id }}.draw(data, options)
     }
 </script>

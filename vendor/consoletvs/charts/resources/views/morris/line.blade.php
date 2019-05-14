@@ -1,8 +1,9 @@
 @include('charts::_partials/container.div-titled')
 
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function (){
-        Morris.Line({
+        {{ $model->id }} = Morris.Line({
             element: "{{ $model->id }}",
             resize: true,
             data: [

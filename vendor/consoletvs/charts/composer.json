@@ -1,6 +1,6 @@
 {
     "name": "consoletvs/charts",
-    "description": "Create charts for laravel using diferent charts libraries",
+    "description": "Create charts for laravel using different charts libraries",
     "license": "MIT",
     "authors": [
         {
@@ -9,10 +9,11 @@
         }
     ],
     "require": {
-        "php": ">=5.6.4",
+        "php": ">=7.0.0",
         "illuminate/support": "5.*",
         "jlawrence/eos": "3.*",
-        "jenssegers/date": "v3.*"
+        "jenssegers/date": "v3.*",
+        "consoletvs/support": "^2.1.2"
     },
     "autoload": {
         "psr-4": {

@@ -1,8 +1,9 @@
 @include('charts::_partials.container.div')
 
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function() {
-        var {{ $model->id }} = new JustGage({
+        {{ $model->id }} = new JustGage({
             id: "{{ $model->id }}",
             value: {{ $model->values ? $model->values[0] : '0' }},
 
@@ -31,7 +32,7 @@
         })
 
         setInterval(function() {
-            $.getJSON("{{ $model->url }}", function( jdata ) {
+            $.getJSON("{!! $model->url !!}", function( jdata ) {
                 {{ $model->id }}.refresh(jdata["{{ $model->value_name }}"])
             })
         }, {{ $model->interval }})

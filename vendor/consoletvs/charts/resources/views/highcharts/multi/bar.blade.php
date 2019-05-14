@@ -1,6 +1,7 @@
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function () {
-        var {{ $model->id }} = new Highcharts.Chart({
+        {{ $model->id }} = new Highcharts.Chart({
             chart: {
                 renderTo:  "{{ $model->id }}",
                 @include('charts::_partials.dimension.js2')

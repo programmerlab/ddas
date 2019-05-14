@@ -11,12 +11,14 @@
 
 namespace ConsoleTVs\Charts;
 
+use ConsoleTVs\Charts\Builder\Url;
 use ConsoleTVs\Charts\Builder\Math;
 use ConsoleTVs\Charts\Builder\Chart;
 use ConsoleTVs\Charts\Builder\Multi;
 use Illuminate\Support\Facades\File;
 use ConsoleTVs\Charts\Builder\Database;
 use ConsoleTVs\Charts\Builder\Realtime;
+use ConsoleTVs\Charts\Builder\MultiUrl;
 use ConsoleTVs\Charts\Builder\MultiDatabase;
 
 /**
@@ -31,7 +33,6 @@ class Builder
      *
      * @param string $type
      * @param string $library
-     *
      * @return Chart
      */
     public static function create($type = null, $library = null)
@@ -46,7 +47,6 @@ class Builder
      * @param int $interval
      * @param string $type
      * @param string $library
-     *
      * @return Realtime
      */
     public static function realtime($url, $interval, $type = null, $library = null)
@@ -60,7 +60,6 @@ class Builder
      * @param \Illuminate\Support\Collection $data
      * @param string $type
      * @param string $library
-     *
      * @return Database
      */
     public static function database($data, $type = null, $library = null)
@@ -76,7 +75,6 @@ class Builder
      * @param int    $amplitude
      * @param string $type
      * @param string $library
-     *
      * @return Math
      */
     public static function math($function, $interval, $amplitude, $type = null, $library = null)
@@ -89,7 +87,6 @@ class Builder
      *
      * @param string $type
      * @param string $library
-     *
      * @return Multi
      */
     public static function multi($type = null, $library = null)
@@ -102,12 +99,37 @@ class Builder
      *
      * @param string $type
      * @param string $library
-     *
      * @return MultiDatabase
      */
     public static function multiDatabase($type = null, $library = null)
     {
         return new MultiDatabase($type, $library);
+    }
+
+    /**
+     * Return a new url chart instance.
+     *
+     * @param string $url
+     * @param string $type
+     * @param string $library
+     * @return Url
+     */
+    public static function url($url, $type = null, $library = null)
+    {
+        return new Url($url, $type, $library);
+    }
+
+    /**
+     * Return a new multi url chart instance.
+     *
+     * @param string $url
+     * @param string $type
+     * @param string $library
+     * @return MultiUrl
+     */
+    public static function multiUrl($url, $type = null, $library = null)
+    {
+        return new MultiUrl($url, $type, $library);
     }
 
     /**
@@ -172,50 +194,50 @@ class Builder
         return array_unique($results);
     }
 
-      /**
-       * Return the library styles.
-       *
-       * @param array  $libraries
-       *
-       * @return string
-       */
-      public function styles($libraries = [])
-      {
-          $styles = static::getAssets($libraries, 'styles');
-          $styles .= view('charts::_partials.loader.css');
+    /**
+     * Return the library styles.
+     *
+     * @param array  $libraries
+     *
+     * @return string
+     */
+    public function styles($libraries = [])
+    {
+        $styles = static::getAssets($libraries, 'styles');
+        $styles .= view('charts::_partials.loader.css');
 
-          return $styles;
-      }
+        return $styles;
+    }
 
-       /**
-        * Return the library scripts.
-        *
-        * @param array  $libraries
-        *
-        * @return string
-        */
-       public function scripts($libraries = [])
-       {
-           $scripts = static::getAssets($libraries, 'scripts');
-           $scripts .= view('charts::_partials.loader.js');
+    /**
+     * Return the library scripts.
+     *
+     * @param array  $libraries
+     *
+     * @return string
+     */
+    public function scripts($libraries = [])
+    {
+        $scripts = static::getAssets($libraries, 'scripts');
+        $scripts .= view('charts::_partials.loader.js');
 
-           return $scripts;
-       }
+        return $scripts;
+    }
 
-        /**
-         * Return the library styles.
-         *
-         * @param array  $libraries
-         *
-         * @return string
-         */
-        public function assets($libraries = [])
-        {
-            $assets = static::styles($libraries);
-            $assets .= static::scripts($libraries);
+    /**
+     * Return the library styles.
+     *
+     * @param array  $libraries
+     *
+     * @return string
+     */
+    public function assets($libraries = [])
+    {
+        $assets = static::styles($libraries);
+        $assets .= static::scripts($libraries);
 
-            return $assets;
-        }
+        return $assets;
+    }
 
     /**
      * Get the library assets.

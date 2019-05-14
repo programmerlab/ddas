@@ -5,8 +5,9 @@
 <div id="{{ $model->id }}" style="position: relative;@include('charts::_partials.dimension.css')"></div>
 
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function() {
-        var {{ $model->id }} = new ProgressBar.Line('#{{ $model->id }}', {
+        {{ $model->id }} = new ProgressBar.Line('#{{ $model->id }}', {
             @if($model->colors)
                 color: "{{ $model->colors[0] }}",
             @else
@@ -23,7 +24,7 @@
         {{ $model->id }}.animate({{ ($model->values[0] - $min) / ($max - $min) }})
 
         setInterval(function() {
-            $.getJSON("{{ $model->url }}", function( jdata ) {
+            $.getJSON("{!! $model->url !!}", function( jdata ) {
                 var v = (jdata["{{ $model->value_name }}"] - {{ $min }})/({{ $max }} - {{ $min }})
                 {{ $model->id }}.animate(v)
             })

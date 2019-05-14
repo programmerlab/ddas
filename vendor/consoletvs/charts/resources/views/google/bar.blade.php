@@ -1,6 +1,6 @@
 <script type="text/javascript">
     google.charts.setOnLoadCallback(draw{{ $model->id }})
-
+    var {{ $model->id }};
     function draw{{ $model->id }}() {
         var data = google.visualization.arrayToDataTable([
             ['', "{!! $model->element_label !!}",
@@ -32,7 +32,7 @@
             @endif
         };
 
-        var {{ $model->id }} = new google.visualization.ColumnChart(document.getElementById("{{ $model->id }}"))
+        {{ $model->id }} = new google.visualization.ColumnChart(document.getElementById("{{ $model->id }}"))
 
         {{ $model->id }}.draw(data, options)
     }

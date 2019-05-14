@@ -23,6 +23,7 @@ class ChartsServiceProvider extends ServiceProvider
         ], 'charts_views');
 
         $this->app->register('Jenssegers\\Date\\DateServiceProvider');
+        $this->app->register('ConsoleTVs\\Support\\SupportServiceProvider');
 
         $this->registerBladeDirectives();
     }

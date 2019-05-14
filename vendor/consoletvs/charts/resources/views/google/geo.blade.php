@@ -1,6 +1,6 @@
 <script type="text/javascript">
     google.charts.setOnLoadCallback(draw{{ $model->id }})
-
+    var {{ $model->id }};
     function draw{{ $model->id }}() {
         var data = google.visualization.arrayToDataTable([
             ['Country', "{!! $model->element_label !!}"],
@@ -23,7 +23,7 @@
             defaultColor: "#607D8",
         };
 
-        var {{ $model->id }} = new google.visualization.GeoChart(document.getElementById("{{ $model->id }}"))
+        {{ $model->id }} = new google.visualization.GeoChart(document.getElementById("{{ $model->id }}"))
 
         {{ $model->id }}.draw(data, options)
     }

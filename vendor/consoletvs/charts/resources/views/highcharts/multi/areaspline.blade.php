@@ -1,6 +1,7 @@
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function () {
-        var {{ $model->id }} = new Highcharts.Chart({
+        {{ $model->id }} = new Highcharts.Chart({
             chart: {
                 type: 'areaspline',
                 renderTo:  "{{ $model->id }}",

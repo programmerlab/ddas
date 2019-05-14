@@ -3,8 +3,9 @@
 @endif
 
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function (){
-        var {{ $model->id }} = new RadialGauge({
+        {{ $model->id }} = new RadialGauge({
             renderTo: "{{ $model->id }}",
             @if($model->colors)
                 colorNumbers: "{{ $model->colors[0] }}",
@@ -97,7 +98,7 @@
         }).draw()
 
         setInterval(function(){
-            $.getJSON("{{ $model->url }}", function( data ) {
+            $.getJSON("{!! $model->url !!}", function( data ) {
                 {{ $model->id }}.value = data["{{ $model->value_name }}"];
             })
         }, {{ $model->interval }})

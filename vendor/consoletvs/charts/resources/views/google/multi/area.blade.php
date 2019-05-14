@@ -1,6 +1,6 @@
 <script type="text/javascript">
     chart = google.charts.setOnLoadCallback(draw{{ $model->id }})
-
+    var {{ $model->id }};
     function draw{{ $model->id }}() {
         var data = google.visualization.arrayToDataTable([
             [
@@ -27,7 +27,7 @@
             legend: { position: 'top', alignment: 'end' }
         };
 
-        var {{ $model->id }} = new google.visualization.AreaChart(document.getElementById("{{ $model->id }}"))
+        {{ $model->id }} = new google.visualization.AreaChart(document.getElementById("{{ $model->id }}"))
 
         {{ $model->id }}.draw(data, options)
     }

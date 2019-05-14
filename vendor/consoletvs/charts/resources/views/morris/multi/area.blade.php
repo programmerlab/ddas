@@ -1,8 +1,9 @@
 @include('charts::_partials/container.div-titled')
 
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function (){
-        Morris.Area({
+        {{ $model->id }} = Morris.Area({
             element: "{{ $model->id }}",
             resize: true,
             data: [

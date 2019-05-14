@@ -3,7 +3,7 @@
  * @author Dmitry "dio" Levashov <dio@std42.ru>
  * @author Andrew Berezovsky <andrew.berezovsky@gmail.com>
  * @author Alex Yashkin <alex@yashkin.by>
- * @version 2018-12-07
+ * @version 2019-03-06
  */
 (function(root, factory) {
 	if (typeof define === 'function' && define.amd) {
@@ -18,9 +18,9 @@
 		translator : 'Dmitry "dio" Levashov &lt;dio@std42.ru&gt;, Andrew Berezovsky &lt;andrew.berezovsky@gmail.com&gt;, Alex Yashkin &lt;alex@yashkin.by&gt;',
 		language   : 'Русский язык',
 		direction  : 'ltr',
-		dateFormat : 'd M Y H:i', // will show like: 07 Дек 2018 16:41
-		fancyDateFormat : '$1 H:i', // will show like: Сегодня 16:41
-		nonameDateFormat : 'ymd-His', // noname upload will show like: 181207-164137
+		dateFormat : 'd M Y H:i', // will show like: 06 Мар 2019 16:56
+		fancyDateFormat : '$1 H:i', // will show like: Сегодня 16:56
+		nonameDateFormat : 'ymd-His', // noname upload will show like: 190306-165630
 		messages   : {
 
 			/********************************** errors **********************************/
@@ -116,6 +116,7 @@
 			'errEditorNotFound'    : 'Не найден редактор для этого типа файлов.', // from v2.1.25 added 23.5.2017
 			'errServerError'       : 'Возникла ошибка на стороне сервера.', // from v2.1.25 added 16.6.2017
 			'errEmpty'             : 'Невозможно очистить папку "$1".', // from v2.1.25 added 22.6.2017
+			'moreErrors'           : 'Еще ошибок: $1', // from v2.1.44 added 9.12.2018
 
 			/******************************* commands names ********************************/
 			'cmdarchive'   : 'Создать архив',
@@ -488,6 +489,8 @@
 			'email'           : 'Email', // from v2.1.43 added 19.10.2018
 			'license'         : 'Лицензия', // from v2.1.43 added 19.10.2018
 			'exportToSave'    : 'Невозможно сохранить файл. Чтобы не потерять изменения, экспортируйте их на свой ПК.', // from v2.1.44 added 1.12.2018
+			'dblclickToSelect': 'Двойной клик по файлу для его выбора.', // from v2.1.47 added 22.1.2019
+			'useFullscreen'   : 'Использовать полноэкранный режим', // from v2.1.47 added 19.2.2019
 
 			/********************************** mimetypes **********************************/
 			'kindUnknown'     : 'Неизвестный',

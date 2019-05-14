@@ -61,6 +61,7 @@ class Google_Service_Sheets extends Google_Service
     parent::__construct($client);
     $this->rootUrl = 'https://sheets.googleapis.com/';
     $this->servicePath = '';
+    $this->batchPath = 'batch';
     $this->version = 'v4';
     $this->serviceName = 'sheets';
 
@@ -197,14 +198,6 @@ class Google_Service_Sheets extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'includeValuesInResponse' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ),
-                'responseValueRenderOption' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'insertDataOption' => array(
                   'location' => 'query',
                   'type' => 'string',
@@ -214,6 +207,14 @@ class Google_Service_Sheets extends Google_Service
                   'type' => 'string',
                 ),
                 'responseDateTimeRenderOption' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'includeValuesInResponse' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+                'responseValueRenderOption' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -324,15 +325,15 @@ class Google_Service_Sheets extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
+                'majorDimension' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
                 'valueRenderOption' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
                 'dateTimeRenderOption' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'majorDimension' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -351,10 +352,6 @@ class Google_Service_Sheets extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'includeValuesInResponse' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ),
                 'responseValueRenderOption' => array(
                   'location' => 'query',
                   'type' => 'string',
@@ -366,6 +363,10 @@ class Google_Service_Sheets extends Google_Service
                 'responseDateTimeRenderOption' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+                'includeValuesInResponse' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
                 ),
               ),
             ),

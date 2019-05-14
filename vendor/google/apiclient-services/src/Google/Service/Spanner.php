@@ -58,6 +58,7 @@ class Google_Service_Spanner extends Google_Service
     parent::__construct($client);
     $this->rootUrl = 'https://spanner.googleapis.com/';
     $this->servicePath = '';
+    $this->batchPath = 'batch';
     $this->version = 'v1';
     $this->serviceName = 'spanner';
 
@@ -266,13 +267,13 @@ class Google_Service_Spanner extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),'setIamPolicy' => array(
@@ -412,6 +413,16 @@ class Google_Service_Spanner extends Google_Service
               'httpMethod' => 'DELETE',
               'parameters' => array(
                 'name' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'executeBatchDml' => array(
+              'path' => 'v1/{+session}:executeBatchDml',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'session' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
@@ -568,15 +579,15 @@ class Google_Service_Spanner extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
                 ),
                 'filter' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

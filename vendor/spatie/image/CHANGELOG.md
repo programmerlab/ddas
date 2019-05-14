@@ -2,6 +2,18 @@
 
 All notable changes to `image` will be documented in this file
 
+## 1.7.2 - 2019-05-13
+
+- fixes `optimize()` when used with `apply()` (#78)
+
+## 1.7.1 - 2019-04-17
+
+- change GlideConversion sequence (#76)
+
+## 1.7.0 - 2019-02-22
+
+- add support for `webp`
+
 ## 1.6.0 - 2019-01-27
 
 - add `setTemporaryDirectory`

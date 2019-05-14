@@ -5,8 +5,9 @@
 <div id="{{ $model->id }}" style="position: relative;@include('charts::_partials.dimension.css')"></div>
 
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function() {
-        var {{ $model->id }} = new ProgressBar.Line('#{{ $model->id }}', {
+        {{ $model->id }} = new ProgressBar.Line('#{{ $model->id }}', {
             @if($model->colors and count($model->colors))
                 color: "{{ $model->colors[0] }}",
             @else

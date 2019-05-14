@@ -13,8 +13,9 @@
 @endforeach
 
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function () {
-        var {{ $model->id }} = new Highcharts.Map({
+        {{ $model->id }} = new Highcharts.Map({
             chart: {
                 renderTo:  "{{ $model->id }}",
                 @include('charts::_partials.dimension.js2')

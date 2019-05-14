@@ -1,8 +1,9 @@
 @include('charts::_partials.container.div')
 
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function() {
-        var {{ $model->id }} = new JustGage({
+        {{ $model->id }} = new JustGage({
             id:  "{{ $model->id }}",
             value: "{{ $model->values[0] }}",
 

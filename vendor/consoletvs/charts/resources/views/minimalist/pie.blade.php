@@ -1,6 +1,7 @@
 @include('charts::_partials.container.svg')
 
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function() {
         @include('charts::minimalist._data.one-indcolor')
 
@@ -10,7 +11,7 @@
         var xAxis = new Plottable.Axes.Category(xScale, 'bottom')
         var yAxis = new Plottable.Axes.Numeric(yScale, 'left')
 
-        var plot = new Plottable.Plots.Pie()
+        {{ $model->id }} = new Plottable.Plots.Pie()
             .addDataset(new Plottable.Dataset(data))
             .sectorValue(function(d) { return d.y; }, yScale)
             @if($model->colors)
@@ -20,7 +21,7 @@
             .renderTo('svg#{{ $model->id }}')
 
         window.addEventListener('resize', function() {
-            plot.redraw()
+            {{ $model->id }}.redraw()
         })
     });
 </script>

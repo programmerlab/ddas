@@ -11,6 +11,7 @@
 namespace ConsoleTVs\Charts\Builder;
 
 use View;
+use ConsoleTVs\Support\Helpers;
 use ConsoleTVs\Charts\Traits\Setters;
 
 /**
@@ -157,7 +158,7 @@ class Chart
             foreach ($this->values as $v) {
                 array_push($this->colors, $color);
             }
-        } elseif (($cc != $cv) || ($this->suffix == 'multi' && ($cc != $ds))) {
+        } elseif (($cc < $cv) || ($this->suffix == 'multi' && ($cc != $ds))) {
             if ($this->suffix == 'multi') {
                 $cv = $ds;
             }
@@ -259,9 +260,12 @@ class Chart
             return;
         }
 
-        $scriptEnds = strrpos($render, '</script>') + strlen('</script>');
+        $this->script = '<script'.Helpers::getBetween('<script', '</script>', $render).'</script>';
+        $this->html = str_replace($this->script, '', $render);
 
-        $this->script = substr($render, 0, $scriptEnds);
-        $this->html = substr($render, $scriptEnds);
+        // $scriptEnds = strrpos($render, '</script>') + strlen('</script>');
+
+        // $this->script = substr($render, 0, $scriptEnds);
+        // $this->html = substr($render, $scriptEnds);
     }
 }

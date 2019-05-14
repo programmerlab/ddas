@@ -22,5 +22,5 @@
         @include('charts::_partials.dimension.js')
     };
 
-    new Chartist.Pie('#{{ $model->id }}', data, options);
+    var {{ $model->id }} = new Chartist.Pie('#{{ $model->id }}', data, options);
 </script>

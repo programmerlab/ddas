@@ -251,7 +251,7 @@ trait Setters
     public function colors($colors)
     {
         $this->colors = $colors;
-
+        
         return $this;
     }
 

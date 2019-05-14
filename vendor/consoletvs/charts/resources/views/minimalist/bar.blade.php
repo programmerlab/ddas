@@ -1,6 +1,7 @@
 @include('charts::_partials.container.svg')
 
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function() {
         @include('charts::minimalist._data.one-indcolor')
 
@@ -17,7 +18,7 @@
             .renderTo('svg#{{ $model->id }}')
 
         window.addEventListener('resize', function() {
-            plot.redraw()
+            {{ $model->id }}.redraw()
         })
     });
 </script>

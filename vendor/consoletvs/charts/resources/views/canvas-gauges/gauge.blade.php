@@ -3,8 +3,9 @@
 @endif
 
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function (){
-        var {{ $model->id }} = new RadialGauge({
+        {{ $model->id }} = new RadialGauge({
             renderTo: "{{ $model->id }}",
             @if($model->colors)
                 colorNumbers: "{{ $model->colors[0] }}",

@@ -80,10 +80,7 @@ class Google_Service_Vision_Resource_ProjectsLocationsProductSets extends Google
    * ProductSet are not deleted.
    *
    * The actual image files are not deleted from Google Cloud Storage.
-   *
-   * Possible errors:
-   *
-   * * Returns NOT_FOUND if the ProductSet does not exist. (productSets.delete)
+   * (productSets.delete)
    *
    * @param string $name Resource name of the ProductSet to delete.
    *
@@ -156,10 +153,10 @@ class Google_Service_Vision_Resource_ProjectsLocationsProductSets extends Google
    * Format is `projects/PROJECT_ID/locations/LOC_ID`.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int pageSize The maximum number of items to return. Default 10,
-   * maximum 100.
    * @opt_param string pageToken The next_page_token returned from a previous List
    * request, if any.
+   * @opt_param int pageSize The maximum number of items to return. Default 10,
+   * maximum 100.
    * @return Google_Service_Vision_ListProductSetsResponse
    */
   public function listProjectsLocationsProductSets($parent, $optParams = array())
@@ -198,12 +195,7 @@ class Google_Service_Vision_Resource_ProjectsLocationsProductSets extends Google
     return $this->call('patch', array($params), "Google_Service_Vision_ProductSet");
   }
   /**
-   * Removes a Product from the specified ProductSet.
-   *
-   * Possible errors:
-   *
-   * * Returns NOT_FOUND If the Product is not found under the ProductSet.
-   * (productSets.removeProduct)
+   * Removes a Product from the specified ProductSet. (productSets.removeProduct)
    *
    * @param string $name The resource name for the ProductSet to modify.
    *

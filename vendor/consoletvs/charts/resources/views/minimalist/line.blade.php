@@ -1,13 +1,14 @@
 @include('charts::_partials.container.svg')
 
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function() {
         @include('charts::minimalist._data.one')
 
         var xScale = new Plottable.Scales.Category()
         var yScale = new Plottable.Scales.Linear()
 
-        var plot = new Plottable.Plots.Line()
+        {{ $model->id }} = new Plottable.Plots.Line()
             .addDataset(new Plottable.Dataset(data))
             .x(function(d) { return d.x; }, xScale)
             .y(function(d) { return d.y; }, yScale)
@@ -17,7 +18,7 @@
             .renderTo('svg#{{ $model->id }}')
 
         window.addEventListener('resize', function() {
-            plot.redraw()
+            {{ $model->id }}.redraw()
         })
     });
 </script>

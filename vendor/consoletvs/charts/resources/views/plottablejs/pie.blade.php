@@ -1,6 +1,7 @@
 @include('charts::_partials.container.svg')
 
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function() {
         @include('charts::plottablejs._data.one')
 
@@ -29,11 +30,11 @@
             title = new Plottable.Components.TitleLabel("{!! $model->title !!}").yAlignment('center');
         @endif
 
-        var table = new Plottable.Components.Table([[title],[plot]]);
-        table.renderTo('svg#{{ $model->id }}');
+        {{ $model->id }} = new Plottable.Components.Table([[title],[plot]]);
+        {{ $model->id }}.renderTo('svg#{{ $model->id }}');
 
         window.addEventListener('resize', function() {
-            table.redraw()
+            {{ $model->id }}.redraw()
         })
     });
 </script>

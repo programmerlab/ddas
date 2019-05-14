@@ -1,8 +1,9 @@
 @include('charts::_partials/container.div-titled')
 
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function (){
-        Morris.Donut({
+        {{ $model->id }} = Morris.Donut({
             element: "{{ $model->id }}",
             resize: true,
             data: [

@@ -1,6 +1,7 @@
 <script type="text/javascript">
+    var {{ $model->id }};
     FusionCharts.ready(function () {
-        var {{ $model->id }} = new FusionCharts({
+        {{ $model->id }} = new FusionCharts({
             type: 'doughnut2d',
             renderAt: "{{ $model->id }}",
             @include('charts::_partials.dimension.js')

@@ -51,6 +51,57 @@ class ApiController extends Controller {
         $user_id = $request->input('userId');
     }
 
+
+    public function getProductByCategory(){ 
+       // $cd = CategoryDashboard::all 
+        $category_data =  \DB::table('marketplace_category_product')->where('category_id','2')->pluck('product_id');
+
+         
+         
+        if(count($category_data)){
+            $status = 1;
+            $code   = 200;
+            $msg    = "Category  list";
+
+
+
+        }else{
+            $status = 0;
+            $code   = 404;
+            $msg    = "Category  list not  found!";
+        }
+        return  response()->json([ 
+                "status"=>$status,
+                "code"=> $code,
+                "message"=> $msg,
+                'data' => $category_data
+            ]
+        );
+    }
+
+    // get category
+    public function getCategory(){ 
+       // $cd = CategoryDashboard::all 
+        $category_data =  \DB::table('marketplace_categories')->select('id','name as categoryName')->get();
+         
+        if(count($category_data)){
+            $status = 1;
+            $code   = 200;
+            $msg    = "Category  list";
+        }else{
+            $status = 0;
+            $code   = 404;
+            $msg    = "Category  list not  found!";
+        }
+        return  response()->json([ 
+                "status"=>$status,
+                "code"=> $code,
+                "message"=> $msg,
+                'data' => $category_data
+            ]
+        );
+    }
+
     // deactive user
     public function deactivateUser($user_id = null) {
         $user = User::find($user_id);
@@ -1919,7 +1970,24 @@ class ApiController extends Controller {
         $hardwareInfo->Mysave();
         
         $customer_cat_prodcuts = [];
-        $storeProducts = \Corals\Modules\Marketplace\Models\product::where(array('store_id' => $input['store_id'], 'status' => 'active'))->get();
+        $storeProductss = \Corals\Modules\Marketplace\Models\product::where(array('store_id' => $input['store_id'], 'status' => 'active'));
+
+
+ 
+        $page_number = ($request->get('page_number'))?$request->get('page_number'):1;
+        $page_size = ($request->get('page_size'))?$request->get('page_size'):10; 
+       
+
+        if($page_number>1){
+                  $offset = $page_size*($page_number-1);
+            }else{
+                  $offset = 0;
+        }  
+        $storeProducts =  $storeProductss->skip($offset)->take($page_size)->get(); 
+
+
+
+
         $product_categories = [];
 	
         foreach($storeProducts as $proCat){

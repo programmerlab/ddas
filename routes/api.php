@@ -73,6 +73,16 @@ Route::group([
         Route::match(['post','get'],'product/type', 'ApiController@getProductType');
 
 
+        // date : 14-05-2019 by kundan
+
+        Route::match(['post','get'],'getCategory','ApiController@getCategory');
+        Route::match(['post','get'],'getProductByCategory','ApiController@getProductByCategory');
+
+        
+
+        //end
+
+
         // update profile
         Route::match(['post','get'],'vendor/updateProfile/{userId}', 'ApiController@vendorUpdate');
         Route::match(['post','get'],'vendor/updateKyc/{userId}', 'ApiController@updateKyc');

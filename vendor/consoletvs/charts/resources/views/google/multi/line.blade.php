@@ -1,6 +1,6 @@
 <script type="text/javascript">
     chart = google.charts.setOnLoadCallback(drawChart)
-
+    var {{ $model->id }};
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
             [
@@ -27,9 +27,9 @@
             legend: { position: 'top', alignment: 'end' }
         };
 
-        var chart = new google.visualization.LineChart(document.getElementById("{{ $model->id }}"))
+        {{ $model->id }} = new google.visualization.LineChart(document.getElementById("{{ $model->id }}"))
 
-        chart.draw(data, options)
+        {{ $model->id }}.draw(data, options)
     }
 </script>
 

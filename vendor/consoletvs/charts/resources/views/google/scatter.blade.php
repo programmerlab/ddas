@@ -1,6 +1,6 @@
 <script type="text/javascript">
     chart = google.charts.setOnLoadCallback(drawChart)
-
+    var {{ $model->id }};
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
             [
@@ -22,9 +22,9 @@
             @endif
         };
 
-        var chart = new google.visualization.ScatterChart(document.getElementById("{{ $model->id }}"))
+        {{ $model->id }} = new google.visualization.ScatterChart(document.getElementById("{{ $model->id }}"))
 
-        chart.draw(data, options)
+        {{ $model->id }}.draw(data, options)
     }
 </script>
 

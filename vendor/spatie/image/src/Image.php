@@ -18,7 +18,7 @@ class Image
 
     protected $imageDriver = 'gd';
 
-    /** @var string|null  */
+    /** @var string|null */
     protected $temporaryDirectory = null;
 
     /**
@@ -119,13 +119,13 @@ class Image
 
         $this->addFormatManipulation($outputPath);
 
-        $glideConversion= GlideConversion::create($this->pathToImage)
-            ->useImageDriver($this->imageDriver)
-            ->performManipulations($this->manipulations);
+        $glideConversion = GlideConversion::create($this->pathToImage)->useImageDriver($this->imageDriver);
 
         if (! is_null($this->temporaryDirectory)) {
             $glideConversion->setTemporaryDirectory($this->temporaryDirectory);
         }
+
+        $glideConversion->performManipulations($this->manipulations);
 
         $glideConversion->save($outputPath);
 
@@ -171,7 +171,7 @@ class Image
             return;
         }
 
-        $supportedFormats = ['jpg', 'png', 'gif'];
+        $supportedFormats = ['jpg', 'pjpg', 'png', 'gif', 'webp'];
 
         if (in_array($outputExtension, $supportedFormats)) {
             $this->manipulations->format($outputExtension);

@@ -1,6 +1,6 @@
 <script type="text/javascript">
     google.charts.setOnLoadCallback(draw{{ $model->id }})
-
+    var {{ $model->id }};
     function draw{{ $model->id }}() {
         var data = google.visualization.arrayToDataTable([
             ['Element', 'Value'],
@@ -67,11 +67,11 @@
             minorTicks: 10,
         };
 
-        var {{ $model->id }} = new google.visualization.Gauge(document.getElementById("{{ $model->id }}"))
+        {{ $model->id }} = new google.visualization.Gauge(document.getElementById("{{ $model->id }}"))
         {{ $model->id }}.draw(data, options)
 
         setInterval(function() {
-            $.getJSON("{{ $model->url }}", function( jdata ) {
+            $.getJSON("{!! $model->url !!}", function( jdata ) {
                 data.setValue(0, 1, jdata["{{ $model->value_name }}"])
                 {{ $model->id }}.draw(data, options)
             })

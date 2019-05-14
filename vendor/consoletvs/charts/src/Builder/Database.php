@@ -77,13 +77,8 @@ class Database extends Chart
     public function __construct($data, $type = null, $library = null)
     {
         parent::__construct($type, $library);
-
-        // Set the data
         $this->date_column = 'created_at';
-
-        // Set the language
         $this->language = App::getLocale();
-
         $this->data = $data;
     }
 

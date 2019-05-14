@@ -4,8 +4,9 @@
 @include('charts::_partials.container.div-titled')
 @include('charts::_partials.dimension.svg')
 <script type="text/javascript">
+    var {{ $model->id }};
     $(function() {
-        var {{ $model->id }} = new ProgressBar.Circle('#{{ $model->id }}', {
+        {{ $model->id }} = new ProgressBar.Circle('#{{ $model->id }}', {
             @if($model->colors and count($model->colors) >= 2)
                 color: "{{ $model->colors[1] }}",
             @else

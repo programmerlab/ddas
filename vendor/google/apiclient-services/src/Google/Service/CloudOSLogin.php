@@ -19,7 +19,8 @@
  * Service definition for CloudOSLogin (v1).
  *
  * <p>
- * Manages OS login configuration for Google account users.</p>
+ * You can use OS Login to manage access to your VM instances using IAM roles.
+ * For more information, read [OS Login](/compute/docs/oslogin/).</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -51,6 +52,7 @@ class Google_Service_CloudOSLogin extends Google_Service
     parent::__construct($client);
     $this->rootUrl = 'https://oslogin.googleapis.com/';
     $this->servicePath = '';
+    $this->batchPath = 'batch';
     $this->version = 'v1';
     $this->serviceName = 'oslogin';
 

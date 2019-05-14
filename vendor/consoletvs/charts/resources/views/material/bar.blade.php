@@ -1,6 +1,6 @@
 <script type="text/javascript">
     google.charts.load('current', {'packages':['bar']})
-
+    var {{ $model->id }};
     google.charts.setOnLoadCallback(draw{{ $model->id }})
 
     function draw{{ $model->id }}() {
@@ -31,7 +31,7 @@
             @endif
         };
 
-        var {{ $model->id }} = new google.charts.Bar(document.getElementById("{{ $model->id }}"))
+        {{ $model->id }} = new google.charts.Bar(document.getElementById("{{ $model->id }}"))
         {{ $model->id }}.draw(data, options)
     }
 </script>
