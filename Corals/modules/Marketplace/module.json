@@ -1,0 +1,25 @@
+{
+  "code": "corals-marketplace",
+  "name": "Marketplace Manager",
+  "author": "Corals",
+  "type": "module",
+  "description": "Manage Subscriptions, products, plans...",
+  "namespace": "Corals\\Modules\\Marketplace",
+  "provider": "MarketplaceServiceProvider",
+  "version": "1.2",
+  "load_order": "601",
+  "folder": "Marketplace",
+  "autoload": "psr-4",
+  "icon": "fa fa-shopping-cart",
+  "require": {
+    "corals-user": "^1.3.1",
+    "corals-settings": "^1.8.7",
+    "corals-cms": "^1.4.3",
+    "corals-utility": "^1.0",
+    "corals-subscriptions": "^1.7.1",
+    "corals-payment": "^1.7.2",
+    "corals-advert": "^1.3",
+    "corals-referral": "^2.2",
+    "corals-messaging": "^1.0.2"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "code": "corals-payment",
+  "name": "Payment Gateways Core",
+  "author": "Corals",
+  "type": "module",
+  "description": "Payment Gateways Core",
+  "namespace": "Corals\\Modules\\Payment",
+  "provider": "PaymentServiceProvider",
+  "version": "1.7.5",
+  "load_order": "500",
+  "folder": "Payment",
+  "autoload": "psr-4",
+  "icon": "fa fa-money",
+  "require": {
+    "corals-foundation": "^1.8.5",
+    "corals-settings": "^1.8.3"
+  }
+}
